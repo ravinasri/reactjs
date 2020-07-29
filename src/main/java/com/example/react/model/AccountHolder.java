@@ -11,7 +11,7 @@ import javax.persistence.Table;
 public class AccountHolder {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private String customer_id;
+	private int customer_id;
 	private String customer_name;
 	private String customer_address;
 	private String account_type;
@@ -32,11 +32,11 @@ public class AccountHolder {
 		this.nomination = nomination;
 	}
 
-	public String getCustomer_id() {
+	public int getCustomer_id() {
 		return customer_id;
 	}
 
-	public void setCustomer_id(String customer_id) {
+	public void setCustomer_id(int customer_id) {
 		this.customer_id = customer_id;
 	}
 

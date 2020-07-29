@@ -49,16 +49,16 @@ public class AccountHolderController {
   }
   
 
-//  @GetMapping("/accounts/{customer_id}")
-//  public ResponseEntity<AccountHolder> getCustomersById(@PathVariable("customer_id") String customer_id) {
-//    Optional<AccountHolder> Data = accountRepository.findById(customer_id);
-//
-//    if (Data.isPresent()) {
-//      return new ResponseEntity<>(Data.get(), HttpStatus.OK);
-//    } else {
-//      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//    }
-//  }
+  @GetMapping("/accounts/{customer_id}")
+  public ResponseEntity<AccountHolder> getCustomersById(@PathVariable("customer_id") int customer_id) {
+   Optional<AccountHolder> Data = accountRepository.findById(customer_id);
+
+   if (Data.isPresent()) {
+     return new ResponseEntity<>(Data.get(), HttpStatus.OK);
+   } else {
+     return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+   }
+ }
   
   @PostMapping("/accounts")
   public ResponseEntity<AccountHolder> create(@RequestBody AccountHolder accountholder) {
@@ -70,41 +70,41 @@ public class AccountHolderController {
     }
   }
   
-//  @PutMapping("/accounts/{customer_id}")
-//  public ResponseEntity<AccountHolder> updateTutorial(@PathVariable("customer_id") String customer_id, @RequestBody AccountHolder accountHolder) {
-//    Optional<AccountHolder> updateData = accountRepository.findById(customer_id);
-//
-//    if (updateData.isPresent()) {
-//    	AccountHolder account = updateData.get();
-//    	account.setCustomer_name(accountHolder.getCustomer_name());
-//    	account.setCustomer_address(accountHolder.getCustomer_address());
-//    	account.setAccount_type(accountHolder.getAccount_type());
-//    	account.setAccount_number(accountHolder.getAccount_number());
-//    	account.setNomination(accountHolder.getNomination());
-//      
-//      return new ResponseEntity<>(accountRepository.save(account), HttpStatus.OK);
-//    } else {
-//      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//    }
-//  }
+  @PutMapping("/accounts/{customer_id}")
+  public ResponseEntity<AccountHolder> updateTutorial(@PathVariable("customer_id") int customer_id, @RequestBody AccountHolder accountHolder) {
+    Optional<AccountHolder> updateData = accountRepository.findById(customer_id);
+
+    if (updateData.isPresent()) {
+    	AccountHolder account = updateData.get();
+    	account.setCustomer_name(accountHolder.getCustomer_name());
+    	account.setCustomer_address(accountHolder.getCustomer_address());
+    	account.setAccount_type(accountHolder.getAccount_type());
+    	account.setAccount_number(accountHolder.getAccount_number());
+    	account.setNomination(accountHolder.getNomination());
+      
+      return new ResponseEntity<>(accountRepository.save(account), HttpStatus.OK);
+    } else {
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+  }
   
-//  @DeleteMapping("/accounts/{customer_id}")
-//  public ResponseEntity<HttpStatus> deleteTutorial(@PathVariable("customer_id") String customer_id) {
-//    try {
-//    	accountRepository.deleteById(customer_id);
-//      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//    } catch (Exception e) {
-//      return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
-//    }
-//  }
-//
-//  @DeleteMapping("/accounts")
-//  public ResponseEntity<HttpStatus> deleteAllTutorials() {
-//    try {
-//      accountRepository.deleteAll();
-//      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//    } catch (Exception e) {
-//      return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
-//    }
-//  }
+  @DeleteMapping("/accounts/{customer_id}")
+  public ResponseEntity<HttpStatus> deleteTutorial(@PathVariable("customer_id") int customer_id) {
+    try {
+    	accountRepository.deleteById(customer_id);
+      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    } catch (Exception e) {
+      return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
+    }
+  }
+
+  @DeleteMapping("/accounts")
+  public ResponseEntity<HttpStatus> deleteAllTutorials() {
+    try {
+      accountRepository.deleteAll();
+      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    } catch (Exception e) {
+      return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
+    }
+  }
 }
