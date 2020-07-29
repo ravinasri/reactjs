@@ -29,14 +29,14 @@ public class AccountHolderController {
   AccountHolderRepository accountRepository;
 
   @GetMapping("/accounts")
-  public ResponseEntity<List<AccountHolder>> getAllDetails(@RequestParam(required = false) String customer_name) {
+  public ResponseEntity<List<AccountHolder>> getAllDetails() {
     try {
       List<AccountHolder> accounts = new ArrayList<AccountHolder>();
 
-      if (customer_name == null)
-    	  accountRepository.findAll().forEach(accounts::add);
-      else
-    	 System.out.println("pls check it");
+//      if (customer_name == null)
+//    	  accountRepository.findAll().forEach(accounts::add);
+//      else
+//    	 System.out.println("pls check it");
 
       if (accounts.isEmpty()) {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
