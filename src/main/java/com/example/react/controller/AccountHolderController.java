@@ -29,25 +29,12 @@ public class AccountHolderController {
   AccountHolderRepository accountRepository;
 
   @GetMapping("/accounts")
-  public ResponseEntity<List<AccountHolder>> getAllDetails() {
-    try {
-      List<AccountHolder> accounts = new ArrayList<AccountHolder>();
-
-//      if (customer_name == null)
-//    	  accountRepository.findAll().forEach(accounts::add);
-//      else
-//    	 System.out.println("pls check it");
-
-      if (accounts.isEmpty()) {
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-      }
-
-      return new ResponseEntity<>(accounts, HttpStatus.OK);
-    } catch (Exception e) {
-      return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
+  public List<AccountHolder> getAllDetails() {
+ 
+  return accountRepository.findAll();
   }
   
+ 
 
   @GetMapping("/accounts/{customer_id}")
   public ResponseEntity<AccountHolder> getCustomersById(@PathVariable("customer_id") int customer_id) {
